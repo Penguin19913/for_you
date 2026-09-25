@@ -33,7 +33,67 @@
     font-size:clamp(2.1rem,6vw,3.3rem); font-weight:700; margin:0 0 .3rem;
     color:var(--gold-soft); text-align:center; line-height:1.1;
   }
-  .sub{ color:var(--text-dim); font-size:1.15rem; text-align:center; margin:0 0 2.4rem; max-width:36ch; font-style:italic; }
+  .sub{ color:var(--text-dim); font-size:1.15rem; text-align:center; margin:0 0 1rem; max-width:36ch; font-style:italic; }
+  .birthday-banner{
+    margin:0 0 2.2rem; padding:.7rem 1rem; border-radius:999px;
+    border:1px solid rgba(205,162,62,.35); background:rgba(205,162,62,.08);
+    color:var(--gold-soft); font-size:1.08rem; letter-spacing:.03em; text-align:center;
+    box-shadow:0 10px 30px -20px rgba(0,0,0,.8);
+  }
+  .birthday-celebration{
+    display:none; position:relative; width:100%; max-width:520px; margin:0 auto 2rem;
+    padding:1.4rem 1.15rem 1.1rem; background:linear-gradient(180deg, rgba(122,32,53,.18), rgba(28,22,32,.9));
+    border:1px solid rgba(205,162,62,.25); border-radius:16px; overflow:hidden;
+    box-shadow:0 28px 60px -30px rgba(0,0,0,.9), inset 0 0 20px rgba(205,162,62,.08);
+  }
+  .birthday-celebration.active{ display:block; }
+  .birthday-celebration::before{
+    content:''; position:absolute; inset:0; background:radial-gradient(circle at 20% 20%, rgba(255,255,255,.12), transparent 35%), radial-gradient(circle at 80% 0%, rgba(255,210,120,.12), transparent 30%);
+    pointer-events:none;
+  }
+  .balloon{ position:absolute; font-size:2rem; animation: floatBalloon 3.6s ease-in-out infinite; z-index:1; }
+  .balloon-1{ left:8%; top:8%; }
+  .balloon-2{ right:12%; top:12%; animation-delay:.8s; }
+  .balloon-3{ left:30%; top:0; animation-delay:1.4s; }
+  .balloon-4{ right:28%; top:4%; animation-delay:.4s; }
+  @keyframes floatBalloon{ 0%,100%{ transform:translateY(0) rotate(-4deg); } 50%{ transform:translateY(-16px) rotate(4deg); } }
+  .fireworks-layer{ position:absolute; inset:0; pointer-events:none; z-index:2; }
+  .spark{ position:absolute; width:8px; height:8px; border-radius:50%; opacity:0; box-shadow:0 0 12px rgba(255,255,255,.9); animation: burst 1.2s ease-out forwards; }
+  @keyframes burst {
+    0% { opacity:1; transform:translate(0,0) scale(1); }
+    100% { opacity:0; transform:translate(var(--dx), var(--dy)) scale(0.2); }
+  }
+  .cake-scene{ position:relative; height:150px; margin-bottom:1rem; z-index:3; }
+  .cake{ position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:200px; height:110px; }
+  .cake-top{ position:absolute; left:28px; right:28px; top:28px; height:20px; background:linear-gradient(180deg, #f8dbb0, #f0c98e); border-radius:10px 10px 6px 6px; }
+  .cake-body{ position:absolute; left:22px; right:22px; bottom:0; height:60px; background:linear-gradient(180deg, #f7d7a0, #ebba78); border-radius:10px 10px 12px 12px; box-shadow:inset 0 0 0 3px rgba(255,255,255,.32); }
+  .cake-body::before, .cake-body::after{ content:''; position:absolute; top:12px; width:6px; height:18px; background:rgba(255,255,255,.3); border-radius:4px; }
+  .cake-body::before{ left:18px; }
+  .cake-body::after{ right:18px; }
+  .candles{ position:absolute; left:0; right:0; top:0; display:flex; justify-content:center; gap:12px; }
+  .candle{ position:relative; width:10px; height:30px; border-radius:6px; background:linear-gradient(180deg, #f4d85d, #d59d2c); box-shadow:0 0 12px rgba(251,217,110,.7); }
+  .candle::before{ content:''; position:absolute; left:50%; top:-10px; width:8px; height:8px; transform:translateX(-50%); border-radius:50%; background:#fff6bb; box-shadow:0 0 12px rgba(255,242,166,.9); }
+  .candle.off{ background:linear-gradient(180deg, #9a8a79, #6d5d55); box-shadow:none; }
+  .candle.off::before{ opacity:0; }
+  .birthday-sticker{ display:none; width:100%; max-width:330px; margin:1rem auto 0; border:2px solid var(--gold); border-radius:14px; box-shadow:0 12px 28px rgba(0,0,0,.45); animation:stickerReveal .7s ease both; }
+  .birthday-sticker.visible{ display:block; }
+  @keyframes stickerReveal{ from{ opacity:0; transform:scale(.82) rotate(-3deg); } to{ opacity:1; transform:scale(1) rotate(0); } }
+  .birthday-message{ text-align:center; position:relative; z-index:3; }
+  .birthday-message h3{ margin:0 0 .45rem; color:var(--gold-soft); font-size:clamp(2rem, 5vw, 2.8rem); letter-spacing:.04em; animation:birthdayPulse 1.6s ease-in-out infinite alternate; }
+  @keyframes birthdayPulse { 0% { transform:scale(1); text-shadow:0 0 0 rgba(230,199,120,0); } 100% { transform:scale(1.04); text-shadow:0 0 20px rgba(230,199,120,.45); } }
+  .birthday-message p{ margin:0 0 .9rem; color:var(--text-dim); font-size:1.08rem; }
+  .wish-box{ width:100%; min-height:70px; resize:vertical; padding:.8rem .9rem; color:var(--text); background:rgba(12,10,13,.58); border:1px solid rgba(205,162,62,.35); border-radius:8px; font:1rem 'Cormorant Garamond', Georgia, serif; }
+  .wish-box:focus{ outline:1px solid var(--gold); border-color:var(--gold); }
+  .birthday-actions{ display:flex; gap:.7rem; margin-top:.8rem; }
+  .birthday-actions .btn{ margin-top:0; }
+  .save-toast{
+    position:fixed; left:50%; bottom:1.5rem; z-index:20; transform:translate(-50%, 1rem);
+    max-width:calc(100% - 2rem); padding:.7rem 1.1rem; border:1px solid var(--gold);
+    border-radius:999px; background:var(--card); color:var(--gold-soft); font-size:1.05rem;
+    box-shadow:0 12px 30px rgba(0,0,0,.45); opacity:0; pointer-events:none;
+    transition:opacity .2s ease, transform .2s ease;
+  }
+  .save-toast.show{ opacity:1; transform:translate(-50%, 0); }
   nav{ display:flex; gap:.6rem; margin-bottom:2.2rem; flex-wrap:wrap; justify-content:center; }
   nav button{
     font-family:inherit; font-size:1.02rem; color:var(--text);
@@ -89,6 +149,8 @@
   .noteInput:focus{ outline:1px solid var(--gold); border-color:var(--gold); }
   .editorActions{ display:flex; gap:.7rem; align-items:center; }
   .editorActions .btn{ flex:1; }
+  .removeNoteBtn{ margin-top:1.1rem; padding:.65rem .9rem; color:var(--text-dim); background:transparent; border:1px solid rgba(185,174,163,.4); border-radius:8px; font:1.05rem 'Cormorant Garamond', Georgia, serif; cursor:pointer; }
+  .removeNoteBtn:hover{ color:var(--text); border-color:var(--gold-soft); }
   .markBtn{ margin-top:1.1rem; padding:.65rem .9rem; color:var(--gold-soft); background:transparent; border:1px solid rgba(205,162,62,.45); border-radius:8px; font:1.05rem 'Cormorant Garamond', Georgia, serif; cursor:pointer; }
   .markBtn.active{ background:rgba(122,32,53,.55); border-color:var(--gold); }
   .calendarHint{ margin:.8rem 0 0; color:var(--text-dim); text-align:center; font-size:.95rem; }
@@ -98,8 +160,37 @@
 </head>
 <body>
   <div class="counter" id="counterText">Loading...</div>
-  <h1>For the one who has my heart</h1>
+  <h1>For the prettiest ember.</h1>
   <p class="sub">A little corner of the internet, just for you.</p>
+  <div class="birthday-banner">25 September is her birthday ♥</div>
+
+  <div class="birthday-celebration" id="birthdayCelebration">
+    <div class="fireworks-layer" id="fireworksLayer"></div>
+    <div class="balloon balloon-1">🎈</div>
+    <div class="balloon balloon-2">🎈</div>
+    <div class="balloon balloon-3">🎈</div>
+    <div class="balloon balloon-4">🎈</div>
+    <div class="cake-scene">
+      <div class="cake">
+        <div class="candles">
+          <span class="candle on"></span>
+          <span class="candle on"></span>
+          <span class="candle on"></span>
+        </div>
+        <div class="cake-top"></div>
+        <div class="cake-body"></div>
+      </div>
+    </div>
+    <div class="birthday-message">
+      <h3>Happy Birthday ♥</h3>
+      <p id="birthdayCountdown">Time to blow the candles: 8s</p>
+      <img class="birthday-sticker" id="birthdaySticker" src="c72c28c2-e00e-489b-bba7-ee675bdb82c8.png" alt="A birthday girl blowing out a candle">
+      <textarea class="wish-box" id="birthdayWish" placeholder="What do you wish for? Make a wish..."></textarea>
+      <div class="birthday-actions">
+        <button class="btn" id="saveBirthdayWish" type="button">Save wish</button>
+      </div>
+    </div>
+  </div>
 
   <nav>
     <button data-panel="memory" class="active">Memory Game</button>
@@ -141,6 +232,7 @@
         <textarea class="noteInput" id="noteInput" placeholder="Write a little note for this day..."></textarea>
         <div class="editorActions">
           <button class="btn" id="saveNote">Save note</button>
+          <button class="removeNoteBtn" id="removeNote" type="button">Remove note</button>
           <button class="markBtn" id="markDate" type="button">Mark important</button>
         </div>
       </div>
@@ -149,6 +241,7 @@
   </div>
 
   <footer>made with a lot of love ♥</footer>
+  <div class="save-toast" id="saveToast" role="status" aria-live="polite"></div>
 
 <script>
 // ---- visit counter ----
@@ -222,16 +315,148 @@ document.getElementById('memReset').addEventListener('click', buildMemory);
 buildMemory();
 
 // ---- calendar ----
+const saveToast = document.getElementById('saveToast');
+let toastTimer;
+function showSaveToast(message){
+  if (!saveToast) return;
+  saveToast.textContent = message;
+  saveToast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => saveToast.classList.remove('show'), 2200);
+}
+
 const calendarGrid = document.getElementById('calendarGrid');
 const monthTitle = document.getElementById('monthTitle');
 const noteInput = document.getElementById('noteInput');
 const selectedDateLabel = document.getElementById('selectedDateLabel');
 const markDate = document.getElementById('markDate');
+const removeNote = document.getElementById('removeNote');
 const calendarToday = new Date();
+const birthdayDate = new Date(calendarToday.getFullYear(), 8, 25);
 let calendarMonth = new Date(calendarToday.getFullYear(), calendarToday.getMonth(), 1);
 let selectedDate = new Date(calendarToday.getFullYear(), calendarToday.getMonth(), calendarToday.getDate());
 let calendarData = {};
 try { calendarData = JSON.parse(localStorage.getItem('ourCalendar') || '{}'); } catch(e) { calendarData = {}; }
+
+const birthdayKey = dateKey(birthdayDate);
+if (!calendarData[birthdayKey]) {
+  calendarData[birthdayKey] = { note: 'Her birthday ♥', important: true };
+  try { localStorage.setItem('ourCalendar', JSON.stringify(calendarData)); } catch(e) {}
+}
+
+const birthdayCelebration = document.getElementById('birthdayCelebration');
+const todayIsBirthday = calendarToday.getMonth() === 8 && calendarToday.getDate() === 25;
+if (birthdayCelebration && todayIsBirthday) {
+  birthdayCelebration.classList.add('active');
+    const fireworksLayer = document.getElementById('fireworksLayer');
+    const candles = Array.from(document.querySelectorAll('.candle'));
+    const birthdayCountdown = document.getElementById('birthdayCountdown');
+    const birthdaySticker = document.getElementById('birthdaySticker');
+    const birthdayWish = document.getElementById('birthdayWish');
+    const saveBirthdayWish = document.getElementById('saveBirthdayWish');
+    let countdownTimer = 8;
+    let birthdayInterval = null;
+    let birthdayMusicStarted = false;
+
+    function playBirthdayTune(){
+      if (birthdayMusicStarted) return;
+      birthdayMusicStarted = true;
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      const context = new AudioCtx();
+      const notes = [392, 523.25, 659.25, 523.25, 587.33, 698.46, 659.25, 783.99, 698.46, 659.25, 523.25, 392];
+      let time = context.currentTime + 0.08;
+      notes.forEach((freq, i) => {
+        const osc = context.createOscillator();
+        const gain = context.createGain();
+        osc.type = i % 2 === 0 ? 'triangle' : 'sine';
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0.0001, time);
+        gain.gain.exponentialRampToValueAtTime(0.08, time + 0.03);
+        gain.gain.exponentialRampToValueAtTime(0.0001, time + 0.28);
+        osc.connect(gain);
+        gain.connect(context.destination);
+        osc.start(time);
+        osc.stop(time + 0.31);
+        time += 0.32;
+      });
+      setTimeout(() => context.close(), 2200);
+    }
+
+    function spawnFirework(){
+      if (!fireworksLayer) return;
+      const colors = ['#ffd166', '#ff6b6b', '#7bdff2', '#c77dff', '#9ae66e', '#f4a261'];
+      const baseX = 20 + Math.random() * 60;
+      const baseY = 20 + Math.random() * 30;
+      for (let i = 0; i < 16; i++) {
+        const spark = document.createElement('span');
+        spark.className = 'spark';
+        const angle = (Math.PI * 2 * i) / 16;
+        const distance = 25 + Math.random() * 35;
+        spark.style.left = `${baseX}%`;
+        spark.style.top = `${baseY}%`;
+        spark.style.background = colors[Math.floor(Math.random() * colors.length)];
+        spark.style.setProperty('--dx', `${Math.cos(angle) * distance}px`);
+        spark.style.setProperty('--dy', `${Math.sin(angle) * distance}px`);
+        fireworksLayer.appendChild(spark);
+        setTimeout(() => spark.remove(), 1200);
+      }
+    }
+
+    function updateBirthdayCountdown(){
+      if (!birthdayCountdown) return;
+      birthdayCountdown.textContent = countdownTimer > 0
+        ? `Time to blow the candles: ${countdownTimer}s`
+        : 'The candles are out. Make a wish 💫';
+    }
+
+    function extinguishCandles(){
+      candles.forEach(c => c.classList.remove('on'));
+      candles.forEach(c => c.classList.add('off'));
+      if (birthdayInterval) clearInterval(birthdayInterval);
+      countdownTimer = 0;
+      updateBirthdayCountdown();
+      if (birthdaySticker) birthdaySticker.classList.add('visible');
+      if (birthdayWish) birthdayWish.focus();
+      playBirthdayTune();
+      spawnFirework();
+      setTimeout(spawnFirework, 250);
+    }
+
+    function startBirthdayCountdown(){
+      updateBirthdayCountdown();
+      birthdayInterval = setInterval(() => {
+        countdownTimer -= 1;
+        if (countdownTimer <= 0) {
+          extinguishCandles();
+          return;
+        }
+        updateBirthdayCountdown();
+      }, 1000);
+    }
+
+    if (saveBirthdayWish) {
+      saveBirthdayWish.addEventListener('click', () => {
+        playBirthdayTune();
+        const savedWish = (birthdayWish?.value || '').trim() || 'A wish for a beautiful year ahead ♥';
+        calendarData[birthdayKey] = Object.assign({}, calendarData[birthdayKey], { note: savedWish, important: true });
+        saveCalendar();
+        renderCalendar();
+        selectDate(birthdayDate);
+        birthdayWish.value = '';
+        noteInput.value = '';
+        showSaveToast('Wish saved ♥');
+        spawnFirework();
+        setTimeout(spawnFirework, 300);
+      });
+    }
+
+    window.addEventListener('pointerdown', playBirthdayTune, { once: true });
+    setInterval(() => spawnFirework(), 1800);
+    startBirthdayCountdown();
+  } else if (birthdayCelebration) {
+    birthdayCelebration.remove();
+  }
 
 function dateKey(date){
   return date.getFullYear() + '-' + String(date.getMonth()+1).padStart(2,'0') + '-' + String(date.getDate()).padStart(2,'0');
@@ -255,6 +480,10 @@ function renderCalendar(){
     if(key === dateKey(selectedDate)) button.classList.add('selected');
     if(calendarData[key] && calendarData[key].note && calendarData[key].note.trim()) button.classList.add('hasNote');
     if(calendarData[key] && calendarData[key].important) button.classList.add('important');
+    if(key === birthdayKey) {
+      button.classList.add('important');
+      button.title = 'Her birthday';
+    }
     button.addEventListener('click', ()=>selectDate(date));
     calendarGrid.appendChild(button);
   }
@@ -278,6 +507,19 @@ document.getElementById('saveNote').addEventListener('click', ()=>{
   calendarData[key] = Object.assign({}, calendarData[key], {note:noteInput.value});
   if(!calendarData[key].note && !calendarData[key].important) delete calendarData[key];
   saveCalendar(); renderCalendar();
+  noteInput.value = '';
+  showSaveToast('Note saved ♥');
+});
+removeNote.addEventListener('click', ()=>{
+  const key = dateKey(selectedDate);
+  if (calendarData[key]) {
+    delete calendarData[key].note;
+    if (!calendarData[key].important) delete calendarData[key];
+  }
+  saveCalendar();
+  renderCalendar();
+  noteInput.value = '';
+  showSaveToast('Note removed');
 });
 markDate.addEventListener('click', ()=>{
   const key = dateKey(selectedDate);
